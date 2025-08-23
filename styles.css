@@ -1,0 +1,131 @@
+body {
+    font-family: 'Cairo', 'Roboto', Arial, sans-serif;
+    background: #f8f8f8;
+    margin: 0;
+    direction: rtl;
+    color: #222;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background: #222;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    margin: 0 10px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 15px 10px;
+    display: block;
+    transition: background 0.2s;
+}
+nav ul li a:hover {
+    background: #d4af37;
+    color: #222;
+}
+.main-header {
+    text-align: center;
+    padding: 60px 10px 30px 10px;
+    background: linear-gradient(120deg, #fffbe6 0%, #f8f8f8 100%);
+}
+.main-header h1 {
+    font-size: 2.5em;
+    margin: 0 0 10px 0;
+    color: #222;
+}
+.main-header h2 {
+    font-size: 1.3em;
+    color: #555;
+    margin: 0 0 10px 0;
+}
+.main-header .golden {
+    color: #d4af37;
+    font-size: 1.1em;
+    margin: 0;
+}
+.progress-bar {
+    width: 80%;
+    margin: 30px auto 0 auto;
+    background: #eee;
+    border-radius: 10px;
+    height: 10px;
+    position: relative;
+}
+.progress-bar .progress {
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, #d4af37 0%, #fffbe6 100%);
+    border-radius: 10px;
+    transition: width 1s;
+}
+section {
+    background: #fff;
+    margin: 30px auto;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #0001;
+    width: 90%;
+    max-width: 900px;
+}
+section h2 {
+    color: #d4af37;
+    margin-top: 0;
+}
+.section-img {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0002;
+}
+.course-block {
+    margin-bottom: 30px;
+}
+#translate-widget {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 1000;
+    background: #fffbe6;
+    border-radius: 8px;
+    padding: 5px 10px;
+    box-shadow: 0 2px 8px #0001;
+}
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #222;
+    color: #fff;
+    margin-top: 40px;
+    font-size: 1em;
+    border-radius: 0 0 12px 12px;
+}
+.main-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+.main-logo {
+    width: 120px;
+    height: auto;
+    display: block;
+}
+.gold-badge {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+@media (max-width: 600px) {
+    .main-header h1 { font-size: 1.3em; }
+    section { padding: 15px 5px; }
+    nav ul { flex-direction: column; }
+    nav ul li { margin: 0; }
+}
