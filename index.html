@@ -40,9 +40,9 @@
         object-fit: contain;
         margin-bottom: 18px;
         border-radius: 50%;
-        box-shadow: 0 2px 12px #ffd70044;
-        background: #fffde6;
-        border: 2px solid #ffd700;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
       }
       .popup-content h2 {
         font-family: 'Cairo', sans-serif;
@@ -62,8 +62,8 @@
         box-shadow: 0 1px 6px #ffd70022;
       }
       .designer-info .designer-img {
-        width: 54px;
-        height: 54px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         margin-top: 8px;
         border: 2px solid #ffd700;
@@ -100,9 +100,454 @@
         }
         .popup-logo { width: 60px; height: 60px; }
       }
+
+      /* شريط العناوين الجديد البسيط */
+      .main-navbar {
+        position: relative;
+        width: 100%;
+        background: #181818;
+        color: #fff;
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.04em;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 2px solid #ffd700;
+        border-radius: 0 0 14px 14px;
+        min-height: 34px;
+        height: 38px;
+        box-shadow: 0 2px 10px #0003;
+        transition: opacity 0.3s, visibility 0.3s;
+        opacity: 1;
+        visibility: visible;
+        z-index: 100;
+        margin-bottom: 12px;
+      }
+      .main-navbar.hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .main-navbar ul {
+        display: flex;
+        gap: 0.2em;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .main-navbar ul li {
+        margin: 0 0.1em;
+      }
+      .main-navbar ul li a {
+        display: block;
+        padding: 6px 13px;
+        color: #fff;
+        border-radius: 7px;
+        text-decoration: none;
+        transition: background 0.18s, color 0.18s;
+        font-weight: bold;
+        font-size: 1em;
+      }
+      .main-navbar ul li a:hover,
+      .main-navbar ul li a.active {
+        background: #222;
+        color: #ffd700;
+      }
+      /* زر السهم السفلي */
+      .navbar-toggle-btn {
+        position: fixed;
+        top: 0;
+        right: 16px;
+        z-index: 101;
+        background: #181818;
+        border: none; /* إزالة الإطار */
+        border-radius: 0 0 14px 14px;
+        box-shadow: 0 2px 10px #0003;
+        padding: 0 7px 2px 7px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        transition: opacity 0.3s;
+        height: 26px;
+        opacity: 1;
+      }
+      .navbar-toggle-btn svg {
+        display: block;
+      }
+      .navbar-toggle-btn.show {
+        display: flex;
+        opacity: 1;
+      }
+      /* السهم يبقى ظاهر دائماً فوق الصفحة */
+      .navbar-toggle-btn.persistent {
+        display: flex !important;
+      }
+      @media (max-width: 700px) {
+        .main-navbar ul li a {
+          padding: 5px 7px;
+          font-size: 0.97em;
+        }
+      }
+      @media (max-width: 500px) {
+        .main-navbar {
+          font-size: 0.97em;
+          border-radius: 0 0 10px 10px;
+        }
+        .main-navbar ul li a {
+          padding: 4px 2px;
+        }
+      }
+
+      /* 2. إزالة شريط الترحيب القديم */
+      .top-bar, .top-bar-collapsed { display: none !important; }
+
+      /* 3. Responsive adjustments for main content */
+      #main-content {
+        margin-top: 0;
+      }
+      @media (max-width: 700px) {
+        #main-content { margin-top: 60px; }
+      }
+      @media (max-width: 500px) {
+        #main-content { margin-top: 48px; }
+      }
+
+      /* 4. Responsive images and sections */
+      .section-img, .main-logo, .main-logo-container img {
+        max-width: 320px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 12px;
+      }
+      .main-logo-container img {
+        max-width: 120px;
+        border-radius: 0 !important;
+        margin-top: 8px;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+      }
+      .main-logo-container {
+        text-align: center;
+        margin: 18px 0 0 0;
+      }
+      @media (max-width: 500px) {
+        .main-logo-container { margin: 8px 0 0 0; }
+      }
+      .main-header h1, .main-header h2, .main-header h3 {
+        word-break: break-word;
+        font-size: 1.1em;
+      }
+      @media (max-width: 500px) {
+        .main-header h1 { font-size: 1.05em; }
+        .main-header h2, .main-header h3 { font-size: 0.98em; }
+      }
+
+      /* 5. Neon Popup Styles (golden) */
+      .neon-popup-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(10, 10, 30, 0.88);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10010;
+      }
+      .neon-popup-content {
+        background: #2d2300;
+        border-radius: 20px;
+        box-shadow: 0 0 40px #ffd70099, 0 0 8px #fffbe6, 0 8px 32px #0002;
+        padding: 38px 28px 32px 28px;
+        max-width: 370px;
+        width: 95%;
+        text-align: center;
+        position: relative;
+        border: 2px solid #ffd700;
+        animation: neonIn 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+      }
+      @keyframes neonIn {
+        0% { transform: scale(0.7) translateY(60px); opacity: 0; box-shadow: 0 0 0 #ffd70000;}
+        100% { transform: scale(1) translateY(0); opacity: 1; box-shadow: 0 0 40px #ffd70099;}
+      }
+      .neon-popup-content h2 {
+        color: #ffd700;
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.3em;
+        margin-bottom: 18px;
+        font-weight: bold;
+        text-shadow: 0 0 8px #ffd700, 0 0 2px #fffbe6;
+      }
+      .neon-popup-content .dev-info {
+        color: #fffbe6;
+        font-size: 1.1em;
+        margin-bottom: 18px;
+        line-height: 2;
+      }
+      .neon-popup-content .dev-badge {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 6px;
+      }
+      .neon-popup-close {
+        margin-top: 18px;
+        padding: 12px 0;
+        width: 100%;
+        background: linear-gradient(90deg, #ffd700 0%, #c9a100 100%);
+        color: #222;
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.1em;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px #ffd70033;
+        transition: background 0.2s, color 0.2s;
+      }
+      .neon-popup-close:hover {
+        background: linear-gradient(90deg, #c9a100 0%, #ffd700 100%);
+        color: #fff;
+      }
+
+      /* Blue credit link */
+      .credit-link {
+        color: #0074ff;
+        font-weight: bold;
+        font-size: 1.1em;
+        cursor: pointer;
+        text-decoration: underline;
+        margin-top: 8px;
+        display: inline-block;
+        transition: color 0.2s;
+      }
+      .credit-link:hover {
+        color: #00eaff;
+      }
+
+      /* Firework styles */
+      .firework {
+        position: fixed;
+        pointer-events: none;
+        z-index: 10005;
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: firework-burst 0.8s linear forwards;
+      }
+      @keyframes firework-burst {
+        0% { opacity: 1; transform: scale(1);}
+        80% { opacity: 1; }
+        100% { opacity: 0; transform: scale(2);}
+      }
+
+      /* تصغير عبارة المطور بالفوتر */
+      .footer-dev {
+        font-size: 0.92em;
+        color: #888;
+        margin-right: 8px;
+        display: inline;
+        font-weight: normal;
+        cursor: pointer;
+        text-decoration: underline;
+        transition: color 0.2s;
+      }
+      .footer-dev:hover {
+        color: #c9a100;
+      }
+      /* شريط العناوين أنحف وسهم إظهار */
+      nav {
+        position: relative;
+        top: 0; right: 0; left: 0;
+        background: #181818;
+        color: #fff;
+        font-family: 'Cairo', sans-serif;
+        font-size: 1.08em;
+        font-weight: bold;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        box-shadow: 0 2px 16px #0007;
+        border-bottom: 2.5px solid #ffd700;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+        transition: opacity 0.3s;
+        opacity: 0.98;
+        margin-bottom: 18px;
+        min-height: 38px;
+        height: 42px;
+        padding: 0 0 0 0;
+        margin-bottom: 14px;
+      }
+      nav.hide {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        display: none !important;
+      }
+      nav ul {
+        display: flex;
+        gap: 0.5em;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      nav ul li {
+        margin: 0 0.2em;
+      }
+      nav ul li a {
+        display: block;
+        padding: 7px 12px;
+        color: #fff !important;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        font-weight: bold;
+        background: none;
+        box-shadow: none;
+        border: none;
+        outline: none;
+      }
+      nav ul li a:hover,
+      nav ul li a.active {
+        background: none;
+        color: #ffd700 !important;
+        text-shadow: 0 0 6px #ffd70088;
+      }
+      @media (max-width: 700px) {
+        nav ul {
+          flex-wrap: wrap;
+          gap: 0;
+        }
+        nav ul li a {
+          padding: 6px 6px;
+          font-size: 0.97em;
+        }
+      }
+      @media (max-width: 500px) {
+        nav ul li a {
+          padding: 5px 2px;
+        }
+      }
+      .nav-toggle-btn {
+        position: fixed;
+        top: 0;
+        right: 16px;
+        z-index: 10002;
+        background: #181818;
+        border: 2px solid #ffd700;
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 2px 12px #0007;
+        padding: 0 7px 2px 7px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        transition: top 0.5s;
+        height: 22px;
+      }
+      .nav-toggle-btn svg {
+        display: block;
+      }
+      .nav-toggle-btn.show {
+        display: flex;
+      }
+      /* تصغير الصور داخل المقال */
+      .section-img, .main-logo, .main-logo-container img {
+        max-width: 320px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 12px;
+      }
+      .main-logo-container img {
+        max-width: 120px;
+        border-radius: 0 !important;
+        margin-top: 8px;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+      }
+      /* صورة دعاء في تواصل معنا - أكبر قليلاً */
+      .contact-doaa-img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #ffd700;
+        box-shadow: 0 2px 16px #ffd70055;
+        margin: 0 auto 12px auto;
+        display: block;
+        background: #fffbe6;
+      }
+      .contact-doaa-name {
+        text-align: center;
+        color: #b38a00;
+        font-weight: bold;
+        font-size: 1.18em;
+        margin-bottom: 10px;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+      }
+      .contact-info-list {
+        text-align: center;
+        margin: 0 auto 10px auto;
+        padding: 0;
+        list-style: none;
+        font-size: 1.05em;
+        color: #222;
+      }
+      .contact-info-list li {
+        margin-bottom: 7px;
+        direction: ltr;
+        unicode-bidi: embed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+      }
+      .contact-info-list li a {
+        color: #0074ff;
+        text-decoration: underline;
+        word-break: break-all;
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+      }
+      .contact-info-list li a:hover {
+        color: #ffd700;
+      }
+      .contact-icon {
+        display: inline-flex;
+        vertical-align: middle;
+        margin-left: 2px;
+        margin-right: 2px;
+      }
+      .contact-icon.whatsapp svg {
+        color: #25d366;
+      }
+      .contact-icon.facebook svg {
+        color: #1877f3;
+      }
+      .contact-icon.web svg {
+        color: #0074ff;
+      }
+      .contact-icon.location svg {
+        color: #b38a00;
+      }
     </style>
 </head>
 <body>
+    <!-- 1. شريط العناوين الجديد في الأعلى -->
+    <!-- إزالة nav الثابت من هنا -->
     <!-- Popup Overlay -->
     <div id="welcome-popup" class="popup-overlay" style="display:flex;">
       <div class="popup-content">
@@ -127,22 +572,29 @@
     </div>
     <!-- نهاية كود البوب اب -->
 
+    <!-- شريط العناوين الجديد -->
+    <nav id="main-navbar" class="main-navbar">
+      <ul>
+        <li><a href="#" data-scroll="home">الصفحة الرئيسية</a></li>
+        <li><a href="#" data-scroll="about">من نحن</a></li>
+        <li><a href="#" data-scroll="courses">الكورسات والدبلومات</a></li>
+        <li><a href="#" data-scroll="steps">خطوات الانضمام</a></li>
+        <li><a href="#" data-scroll="benefits">المزايا والصلاحيات</a></li>
+        <li><a href="#" data-scroll="rights">الحقوق والواجبات</a></li>
+        <li><a href="#" data-scroll="faqs">الاسئلة الشائعة</a></li>
+        <li><a href="#" data-scroll="contact">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <!-- زر السهم السفلي لإظهار الشريط (سيبقى ظاهر دائماً فوق الصفحة) -->
+    <div id="navbar-toggle-btn" class="navbar-toggle-btn persistent" title="إظهار القائمة" style="display:flex;">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M6 8L11 13L16 8" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
     <div id="main-content" style="display:none;">
+      <!-- شريط العناوين ضمن الصفحة -->
       <!-- اللوجو في الأعلى -->
-      <!-- القائمة الرئيسية -->
-      <nav>
-          <ul>
-              <li><a href="/">الصفحة الرئيسية</a></li>
-              <li><a href="/about">من نحن</a></li>
-              <li><a href="/courses">الكورسات والدبلومات</a></li>
-              <li><a href="/join">خطوات الانضمام</a></li>
-              <li><a href="/benefits">المزايا والصلاحيات</a></li>
-              <li><a href="/rights">الحقوق والواجبات</a></li>
-              <li><a href="/faqs">الاسئلة الشائعة</a></li>
-              <li><a href="/contact">تواصل معنا</a></li>
-          </ul>
-      </nav>
-      <div class="main-logo-container">
+      <div class="main-logo-container" id="home">
           <img src="images/logo.png" alt="لوجو النقابة" class="main-logo">
       </div>
       <!-- الهيدر -->
@@ -166,16 +618,16 @@
           <div class="progress"></div>
       </div>
       <!-- من نحن -->
-      <section class="about">
+      <section class="about" id="about">
           <h2>من نحن؟</h2>
           <p>
               النقابة العامة : تعمل علي قيد المحكمين والمستشارين والخبراء والفنيين والعاملين في نظام تحكيم المؤسسات.<br>
-              الفرع الرئيسي في مدينة نصر بجانب مستشفي دار الفؤاد.
+              الفرع الرئيسي في 2 طريق النصر بجوار الجهاز المركزي للتنظيم والإدارة بمدينة نصر بجانب مستشفي دار الفؤاد.
           </p>
           <img src="placeholder-about.jpg" alt="صورة النقابة" class="section-img">
       </section>
       <!-- الكورسات والدبلومات -->
-      <section class="courses">
+      <section class="courses" id="courses">
           <h2>الكورسات والدبلومات</h2>
           <div class="course-block">
               <h3>1- الدبلومات المهنية</h3>
@@ -191,7 +643,10 @@
                   الدراسة من 4 إلى 5 أسابيع برايفت مع الدكتور (Online على Zoom)<br>
                   استلام شهادة مزاولة المهنة الأساسية لافتتاح مكتب تحكيم دولي
               </p>
-              <img src="placeholder-course1.jpg" alt="دبلومات" class="section-img">
+              <img src="images/plac11eholder-course1.jpg" alt="دبلومات" class="section-img">
+              <img src="images/plac11eholder-course2.jpg" alt="دبلومات" class="section-img">
+              <img src="images/plac11eholder-course3.jpg" alt="دبلومات" class="section-img">
+              <img src="images/plac11eholder-course4.jpg" alt="دبلومات" class="section-img">
           </div>
           <div class="course-block">
               <h3>2- دكتوراه مهنية</h3>
@@ -199,7 +654,9 @@
                   من جامعة أسيوط - دراسة Online مع الدكتور<br>
                   عمل رسالة دكتوراه بشرط وجود ماجستير مهني ودبلومات مهنية وشهادة مزاولة المهنة
               </p>
-              <img src="placeholder-course2.jpg" alt="دكتوراه مهنية" class="section-img">
+              <img src="images/Doctor1.jpg" alt="دكتوراه مهنية" class="section-img">
+              <img src="images/Doctor2.jpg" alt="دكتوراه مهنية" class="section-img">
+              <img src="images/Doctor3.jpg" alt="دكتوراه مهنية" class="section-img">
           </div>
           <div class="course-block">
               <h3>3- ماجستير مهني</h3>
@@ -208,12 +665,14 @@
                   دراسة أونلاين<br>
                   رسالة ماجستير بشرط الحصول على الدورات المهنية وشهادة مزاولة المهنة
               </p>
-              <img src="placeholder-course3.jpg" alt="ماجستير مهني" class="section-img">
+              <img src="images/Master.jpg" alt="ماجستير مهني" class="section-img">
+              <img src="images/Master2.jpg" alt="ماجستير مهني" class="section-img">
+              <img src="images/Master3.jpg" alt="ماجستير مهني" class="section-img">
           </div>
       </section>
       <!-- خطوات الانضمام -->
-      <section class="steps">
-          <h2>خطوات التقديم</h2>
+      <section class="steps" id="steps">
+          <h2>شروط التقديم</h2>
           <ol>
               <li>أن يكون كامل الأهلية القانونية</li>
               <li>أن يكون حسن السمعة محمود السيرة</li>
@@ -222,32 +681,29 @@
               <li>أن يتقدم بطلب القيد مشفوعاً بالمستندات المطلوبة وترفق بملف القيد</li>
               <li>من زالت عضويته وأعاد طلب القيد من جديد يحسب كأول مرة</li>
           </ol>
-          <img src="placeholder-steps.jpg" alt="خطوات التقديم" class="section-img">
+          <img src="images/ashlynn-repo.png" alt="خطوات التقديم" class="section-img">
       </section>
       <!-- المزايا والصلاحيات -->
-      <section class="benefits">
+      <section class="benefits" id="benefits">
           <h2>المزايا والصلاحيات</h2>
           <!-- صور المزايا -->
           <div style="text-align:center; margin-bottom:30px;">
               <img src="images/1.jpg" alt="ميزة 1" style="max-width:100%; height:auto; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;">
-              <div style="margin-bottom:15px; color:#888; font-size:1em;">صورة بجودة عالية - تظهر الميزة بوضوح</div>
               <img src="images/2.jpg" alt="ميزة 2" style="max-width:100%; height:auto; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;">
               <img src="images/3.jpg" alt="ميزة 3" style="max-width:100%; height:auto; margin-bottom:15px; display:block; margin-left:auto; margin-right:auto;">
           </div>
           <!-- كارنيه طبي -->
           <div style="margin:30px 0; text-align:center;">
-              <img src="images/medical-card.jpg" alt="كارنيه طبي" style="max-width:300px; width:100%; margin-bottom:10px; display:block; margin-left:auto; margin-right:auto;">
               <h3 style="color:#d4af37; margin-top:10px;">كارنيه طبي</h3>
               <p>
                   خصومات من <strong>10%</strong> إلى <strong>50%</strong> حسب محافظة العميل.<br>
                   يوجد تجميعات بأسماء وعناوين وأرقام جميع المستشفيات الخاصة ومعامل التحاليل والأشعات.<br>
                   يمكن إضافة <strong>3 أفراد من الأسرة</strong> ليصبح الكارت الطبي عائلي.
               </p>
+              <img src="images/Medical.jpg" style="max-width:300px; width:100%; margin-bottom:10px; display:block; margin-left:auto; margin-right:auto;">
           </div>
           <!-- كارنيه نوادى -->
           <div style="margin:30px 0; text-align:center;">
-              <img src="images/club-card.jpg" alt="كارنيه نوادى" style="max-width:300px; width:100%; margin-bottom:10px; display:block; margin-left:auto; margin-right:auto;">
-              <img src="images/club-card2.jpg" alt="2كارنيه نوادى" style="max-width:300px; width:100%; margin-bottom:10px; display:block; margin-left:auto; margin-right:auto;">
               <h3 style="color:#d4af37; margin-top:10px;">كارنيه نوادى</h3>
               <div style="font-weight:bold; font-size:1.3em; margin:20px 0 10px 0;">
                   النوادى المتاح دخولها:
@@ -259,23 +715,204 @@
                   <li>نادى المحامين بالمعادى</li>
                   <li>نادى الثقافيين بنهايه كوبرى عباس</li>
               </ul>
+              <img src="images/club-card.jpg" alt="كارنيه نوادى" style="max-width:300px; width:100%; margin-bottom:10px; display:block; margin-left:auto; margin-right:auto;">
+              <img src="images/club-card2.jpg" alt="2كارنيه نوادى" style="max-width:300px; width:100%; margin-bottom:10px; display:block; margin-left:auto; margin-right:auto;">
           </div>
       </section>
+      <!-- الحقوق والواجبات -->
+      <section class="rights" id="rights">
+        <h2>الحقوق والواجبات</h2>
+        <ul>
+          <li>يحق للعضو الاستفادة من جميع خدمات النقابة المقدمة للأعضاء.</li>
+          <li>الالتزام بقوانين ولوائح النقابة وعدم الإخلال بسمعتها.</li>
+          <li>المشاركة في الفعاليات والدورات التدريبية.</li>
+          <li>الحفاظ على سرية المعلومات والبيانات الخاصة بالنقابة وأعضائها.</li>
+          <li>دفع الاشتراكات السنوية في مواعيدها.</li>
+        </ul>
+      </section>
+      <!-- الأسئلة الشائعة -->
+      <section class="faqs" id="faqs">
+        <h2>الأسئلة الشائعة</h2>
+        <div>
+          <strong>كيف يمكنني الانضمام للنقابة؟</strong>
+          <p>يمكنك التقديم من خلال استيفاء الشروط وتقديم المستندات المطلوبة عبر التواصل مع إدارة النقابة.</p>
+        </div>
+        <div>
+          <strong>هل الشهادات معتمدة؟</strong>
+          <p>نعم، جميع الشهادات معتمدة من الجهات المختصة.</p>
+        </div>
+        <div>
+          <strong>هل هناك دعم فني؟</strong>
+          <p>نعم، يوجد دعم فني متواصل للأعضاء عبر وسائل التواصل الرسمية.</p>
+        </div>
+      </section>
+      <!-- تواصل معنا -->
+      <section class="contact" id="contact">
+        <h2>تواصل معنا</h2>
+        <img src="images/doaa.jpg" alt="م/دعاء أبو اليزيد محمود" class="contact-doaa-img">
+        <div class="contact-doaa-name">
+          م. دعاء أبو اليزيد محمود
+          <span class="gold-badge" title="موثق">
+            <!-- شارة توثيق ذهبية جميلة -->
+            <svg width="26" height="26" viewBox="0 0 48 48" fill="none" style="vertical-align:middle;">
+              <circle cx="24" cy="24" r="20" fill="#FFD700" stroke="#C9A100" stroke-width="2"/>
+              <circle cx="24" cy="24" r="13" fill="#fffbe6"/>
+              <path d="M18 25.5L23 30L30 20" stroke="#C9A100" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="24" cy="24" r="18" fill="none" stroke="#fffbe6" stroke-width="1.2" stroke-dasharray="2 3"/>
+            </svg>
+          </span>
+        </div>
+        <ul class="contact-info-list">
+          <li>
+            <span class="contact-icon">
+              <!-- أيقونة تليفون -->
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="#b38a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-3 2c1.5 3 4.5 6 7.5 7.5l2-3 5 2v4c0 1-1 2-2 2A17 17 0 0 1 3 6c0-1 1-2 2-2z"/></svg>
+            </span>
+            تليفونيا: <a href="tel:01276585006">01276585006</a>
+          </li>
+          <li>
+            <span class="contact-icon whatsapp">
+              <!-- أيقونة واتساب -->
+              <svg width="18" height="18" fill="none" viewBox="0 0 32 32"><path fill="#25d366" d="M16 3A13 13 0 0 0 4.7 24.2l-1.1 4.1a1 1 0 0 0 1.2 1.2l4.1-1.1A13 13 0 1 0 16 3zm0 24a11 11 0 1 1 0-22 11 11 0 0 1 0 22zm5.2-7.8c-.3-.2-1.7-.8-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.7-1.5-3.7-3.3-.3-.5.3-.5.8-1.7 0-.2 0-.4 0-.6 0-.2-.1-.4-.2-.6-.2-.2-.5-.6-.7-.8-.2-.2-.4-.2-.6-.2-.2 0-.4 0-.6 0-.2 0-.5.1-.7.3-.2.2-.7.7-.7 1.7 0 1 .7 2 1.1 2.5 1.3 1.7 3.1 2.8 4.8 3.2.5.1.9.1 1.2-.1.3-.2 1.1-1.1 1.2-1.4.1-.3.1-.5 0-.7z"/></svg>
+            </span>
+            واتساب: <a href="https://wa.me/201140971029" target="_blank">01140971029</a>
+          </li>
+          <li>
+            <span class="contact-icon web">
+              <!-- أيقونة موقع -->
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#0074ff" stroke-width="2"/><path stroke="#0074ff" stroke-width="2" d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+            </span>
+            الموقع الرسمي للنقابة: <a href="https://arbitrationeg.com" target="_blank">arbitrationeg.com</a>
+          </li>
+          <li>
+            <span class="contact-icon facebook">
+              <!-- أيقونة فيسبوك -->
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#1877f3" stroke-width="2"/><path fill="#1877f3" d="M13.5 12H15l.5-2h-2V8.5c0-.6.2-1 1-1h1V6.1c-.2 0-.7-.1-1.3-.1-1.7 0-2.7 1-2.7 2.8V10H9v2h1.5v5h2v-5z"/></svg>
+            </span>
+            الصفحة الرسمية علي فيسبوك: <a href="https://www.facebook.com/GSOIAC" target="_blank">facebook.com/GSOIAC</a>
+          </li>
+          <li>
+            <span class="contact-icon location">
+              <!-- أيقونة موقع/موقع جغرافي -->
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="#b38a00" stroke-width="2" d="M12 21s7-6.1 7-11A7 7 0 0 0 5 10c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="3" stroke="#b38a00" stroke-width="2"/></svg>
+            </span>
+            الفرع الرئيسي: <span style="color:#444;">2 طريق النصر بجوار الجهاز المركزي للتنظيم والإدارة بمدينة نصر بجانب مستشفي دار الفؤاد</span>
+          </li>
+        </ul>
+      </section>
       <footer>
-          جميع الحقوق محفوظة © النقابة العامة لمستشاري التحكيم الدولي 2025
+        جميع الحقوق محفوظة © النقابة العامة لمستشاري التحكيم الدولي 2025
+        <span class="footer-dev" id="credit-link">| تطوير وتصميم Eng/Maru_Faltas</span>
       </footer>
+    </div>
+    <!-- Neon Developer Popup -->
+    <div id="neon-popup" class="neon-popup-overlay" style="display:none;">
+      <div class="neon-popup-content">
+        <h2>
+          <span class="dev-badge">
+            <!-- شارة توثيق ذهبية جديدة -->
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="22" fill="#FFD700" stroke="#C9A100" stroke-width="3"/>
+              <circle cx="24" cy="24" r="14" fill="#fffbe6"/>
+              <path d="M17 25.5L22 30L31 19" stroke="#C9A100" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="24" cy="24" r="20" fill="none" stroke="#fffbe6" stroke-width="1.5" stroke-dasharray="3 3"/>
+            </svg>
+          </span>
+          المهندس الدكتور : ماريو فلتس
+        </h2>
+        <div class="dev-info">
+          <div>01069663958</div>
+          <div style="margin-top:10px; color:#ffd700; font-size:0.95em;">مطور سورس كود الموقع</div>
+        </div>
+        <button class="neon-popup-close" onclick="closeNeonPopup()">إغلاق</button>
+      </div>
     </div>
 
     <script>
-      // Show popup on page load
-      window.onload = function() {
-        document.getElementById('welcome-popup').style.display = 'flex';
-        document.getElementById('main-content').style.display = 'none';
+      // Smooth scroll for nav links
+      document.querySelectorAll('nav a[data-scroll]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const section = this.getAttribute('data-scroll');
+          document.querySelectorAll('nav a[data-scroll]').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+          if (section === 'home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const el = document.getElementById(section);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+
+      // شريط العناوين يظهر 4 ثواني ثم يختفي ويظهر السهم
+      const navbar = document.getElementById('main-navbar');
+      const navbarToggleBtn = document.getElementById('navbar-toggle-btn');
+      let navbarTimeout;
+      function hideNavbar() {
+        navbar.classList.add('hide');
+        setTimeout(() => {
+          navbar.style.display = 'none';
+          navbarToggleBtn.classList.add('show', 'persistent');
+        }, 300);
+      }
+      function showNavbar() {
+        navbar.style.display = 'flex';
+        setTimeout(() => {
+          navbar.classList.remove('hide');
+        }, 10);
+        navbarToggleBtn.classList.remove('show');
+      }
+      navbarToggleBtn.onclick = function() {
+        showNavbar();
+        clearTimeout(navbarTimeout);
+        navbarTimeout = setTimeout(() => hideNavbar(), 4000);
       };
+      window.addEventListener('DOMContentLoaded', function() {
+        navbar.style.display = 'flex';
+        navbar.classList.remove('hide');
+        navbarToggleBtn.classList.remove('show');
+        clearTimeout(navbarTimeout);
+        navbarTimeout = setTimeout(() => hideNavbar(), 4000);
+      });
+
+      // Smooth scroll for nav links
+      document.querySelectorAll('.main-navbar a[data-scroll]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const section = this.getAttribute('data-scroll');
+          document.querySelectorAll('.main-navbar a[data-scroll]').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+          if (section === 'home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const el = document.getElementById(section);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+
+      // إصلاح مشكلة عدم ظهور الصفحة عند الضغط على "دخول الموقع"
       function closePopup() {
         document.getElementById('welcome-popup').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
+        // إظهار شريط العناوين من جديد عند الدخول
+        navbar.style.display = 'flex';
+        navbar.classList.remove('hide');
+        navbarToggleBtn.classList.remove('show');
+        clearTimeout(navbarTimeout);
+        navbarTimeout = setTimeout(() => hideNavbar(), 4000);
       }
+
+      // حماية إضافية (ملاحظة فقط):
+      // - يمكنك ضغط/تصغير الكود (minify) باستخدام أدوات مثل Terser أو UglifyJS.
+      // - يمكن تعطيل كليك يمين ونسخ النصوص (ليس حماية حقيقية).
+      // - لا يوجد تشفير حقيقي للـHTML/CSS/JS، فقط تصعيب القراءة.
+      // - الحماية الحقيقية تكون في السيرفر وليس في الواجهة الأمامية.
     </script>
 </body>
 </html>
